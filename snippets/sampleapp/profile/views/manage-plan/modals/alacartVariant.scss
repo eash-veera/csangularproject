@@ -1,0 +1,66 @@
+md-dialog{
+	.alacartComponent{
+		width:100%;
+
+		md-ink-bar{
+			color:#335E8B !important;
+        	background:#335E8B !important;
+		}
+
+		.variantDetails{
+			padding:16px 32px 32px 32px;
+
+			.tabHeader{
+		        width:100%;
+		        font-size:18px;
+		        padding-bottom:16px;
+		        margin-bottom:32px; 
+		        color:rgb(35, 91, 145);
+		        border-bottom:1px solid rgba(0,0,0,0.084);  
+		    }
+
+		    .centerBody{
+
+		    	span{
+			        color:rgba(0,0,0,0.541176);
+			    }
+
+			    .payableContainer{
+			        border-left:1px solid rgba(0,0,0,0.084);
+
+			        span:nth-child(1){
+
+				    } 
+
+				    span:nth-child(2){
+				        padding-top:7px;
+				        font-size:24px; 
+				    }
+
+			    }
+
+			    .dateContainer{
+			        cursor:help;
+
+			    	span:nth-child(1){
+
+				    }
+
+				    span:nth-child(2){
+				        padding-top:7px;
+				        font-size:24px;
+				    }
+
+				    div[ms-numeric-stepper]{
+				    	margin-top:8px;
+				    }
+			    }
+		    }
+		}
+
+		.tabFooter{
+			height:64px;
+			border-top:1px solid rgba(0,0,0,0.084); 
+		}
+	}
+}

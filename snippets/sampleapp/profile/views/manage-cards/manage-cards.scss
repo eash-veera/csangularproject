@@ -1,0 +1,195 @@
+#profile {
+
+    #manage-cards-tab{
+
+        .profileControlContainer{
+            width:100%;
+            padding:12px 24px;
+            border-bottom:1px solid rgba(0, 0, 0, 0.084);
+
+            button{
+                float:right;
+                margin:0px;
+            }
+
+            button:nth-child(2){
+                margin-right:12px;
+            }
+
+            button:nth-child(3){
+                margin-right:12px;
+            }
+        }
+
+        .subheader{
+            background: #f6f6f6;
+            font-size: 18px;
+            height: 48px;
+            line-height: 48px;
+            padding-left: 32px;
+        }
+
+        .lineitems{
+            width:100%;
+            font-size:15px; 
+
+            .list-items-header{
+                width:100%;
+                height:48px;
+                font-weight:500;
+                color:#2D6296;
+                border-top:1px solid rgba(0, 0, 0, 0.08);
+                border-bottom:1px solid rgba(0, 0, 0, 0.08);
+
+                .list-item-header-control{
+                    width:48px; 
+                    height:100%;
+                }
+
+                .info{
+                    width:calc(100% - 144px);
+
+                    .list-item-header-title{
+
+                        &.left{
+                            text-align:left;
+                        }
+
+                        &.center{
+                            text-align:center;
+                        }
+
+                        &.right{
+                            text-align:right;
+                        }
+                    }
+                }
+            }
+
+            .line-items-container {
+
+                .line-items{
+
+                    &.sortable {
+
+                        .line-item {
+                            padding: 16px 16px 16px 48px;
+
+                            .handle {
+                                display: block;
+                            }
+                        }
+                    }
+                }
+
+                .line-items {
+                    overflow-x: hidden;
+
+                }
+            }
+
+            .line-item {
+                position: relative;
+                background:#F6F6F6;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+                text-transform: none;
+                cursor: pointer;
+                height:48px;
+                overflow:hidden; 
+
+                &.line-item-placeholder {
+                    background: rgba(0, 0, 0, 0.12);
+                    * {
+                        opacity: 0;
+                    }
+                }
+
+                .handle {
+                    height: 100%;
+                    width: 48px;
+                    cursor: move;
+                    text-align: center;
+                }
+
+                &.selected {
+                    background: #FFF8E1;
+                }
+
+                .info {
+                    width:calc(100% - 144px);
+                    padding:8px 0px;
+
+                    .item-value{
+
+                        .cardcygil{
+                            width:58px;
+                            height:36px;
+                        }
+
+                        .transactionStatus{
+
+                            &.succeeded{
+                                color:#2ecc71;
+                            }
+
+                            &.failed{
+                                color:#e74c3c;
+                            }
+                        }
+
+                        &.two-line{
+
+                            span:nth-child(1){
+                                font-weight:500;
+                                font-size:16px;
+                            }
+
+                            span:nth-child(2){
+                                font-size:12px; 
+                            }
+                        }
+
+                        &.left{
+                            text-align:left;
+                        }
+
+                        &.center{
+                            text-align:center;
+                        }
+
+                        &.right{
+                            text-align:right;
+                        }
+                    }
+                }
+
+                .buttons {
+                    height: 100%;
+                    width: 96px;
+                    top: 0;
+                    left: 0;
+                    cursor: move;
+                    text-align: center;
+                }
+            }
+
+            .line-item-ghost {
+                opacity: 1 !important;
+                background: #FFFFFF;
+                box-shadow: 0 7px 9px -4px rgba(0,0,0,0.2),0 14px 21px 2px rgba(0,0,0,0.14),0 5px 26px 4px rgba(0,0,0,0.12);
+                border: none;
+
+                .md-ripple-container {
+                    display: none;
+                }
+            }
+        }
+
+        .emptyitems{
+            width:100%;
+            height:192px;
+            font-size:15px;
+            font-weight:500;   
+        }
+    }
+}

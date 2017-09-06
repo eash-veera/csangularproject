@@ -1,0 +1,55 @@
+<div id="purchase-history-tab" layout="column">
+    <div class="subheader" layout="row">
+        Purchase Details
+    </div>
+    <div class="lineitems" layout="column" ng-if="vm.allPaymentRecords">
+        <div class="list-items-header" layout="row" layout-align="start center">
+            <div class="list-item-header-control handle"></div>
+            <div class="info" layout="row">
+                <div class="list-item-header-title left" flex="25">Date</div>
+                <!-- <div class="list-item-header-title left" flex="20">Document ID</div> -->
+                <div class="list-item-header-title left" flex="25">Type</div>
+                <div class="list-item-header-title center" flex="25">Status</div>
+                <div class="list-item-header-title right" flex="25">Amount</div>
+            </div>
+            <div class="list-item-header-control handle"></div>
+        </div>
+        <div class="line-items-container">
+            <div class="line-item" md-ink-ripple layout="row" layout-align="start center" ng-repeat="timelinenode in vm.allPaymentRecords">
+                <div layout="row" layout-align="start center" flex>
+                    <div class="handle"></div>
+
+                    <div class="info" layout="row" layout-align="start center">
+
+                        <div class="item-value left" flex="25">
+                            {{timelinenode.receivedDate | toDateObject | date:'mediumDate'}}
+                        </div>
+
+                        <!-- <div class="item-value interactive left" flex="20">
+                            {{timelinenode.docLink}}
+                        </div> -->
+
+                        <div class="item-value left" flex="25">
+                            {{timelinenode.type}}
+                        </div>
+
+                        <div class="item-value center" flex="25">
+                            <div class="transactionStatus" ng-class="timelinenode.status">
+                                <div class="transactionStatus-label">{{timelinenode.status}}</div>
+                            </div>
+                        </div>
+
+                        <div class="item-value right" flex="25">
+                            {{timelinenode.amount | currency}}
+                        </div>
+                    </div>
+
+                    <div class="buttons" layout="row" layout-align="start center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="emptyitems" layout="column" layout-align="center center" ng-if="!vm.allPaymentRecords">
+        <div class=""> There are no payment records.</div>
+    </div>
+</div>

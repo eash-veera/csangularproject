@@ -1,0 +1,64 @@
+<div id="manage-cards-tab" layout="column">
+    <section class="profileControlContainer">
+        <md-button class="md-primary" add-stripe-card="vm.cardAddStripeConfig" style="border:2px solid">Add New Card</md-button>
+    </section>
+    <div class="subheader" layout="row">
+        Card Details
+    </div>
+    <div class="lineitems" layout="column" ng-if="vm.allCardDetails">
+        <div class="list-items-header" layout="row" layout-align="start center">
+            <div class="list-item-header-control handle"></div>
+            <div class="info" layout="row">
+                <div class="list-item-header-title left" flex="10">Type</div>
+                <div class="list-item-header-title center" flex="30">Card Number</div>
+                <div class="list-item-header-title center" flex="30">Expiery Date</div>
+                <div class="list-item-header-title center" flex="30">Card Assignee</div>
+            </div>
+            <div class="list-item-header-control handle"></div>
+            <div class="list-item-header-control handle"></div>
+        </div>
+        <div class="line-items-container">
+            <div class="line-item" md-ink-ripple layout="row" layout-align="start center" ng-repeat="ccCard in vm.allCardDetails">
+                <div layout="row" layout-align="start center" flex>
+                    <div class="handle"></div>
+
+                    <div class="info" layout="row" layout-align="start center">
+
+                        <div class="item-value left" flex="10">
+                            <!-- {{ccCard.brand}} -->
+                            <div class="cardcygil">
+                                <img ng-src="/assets/payment/{{ccCard.brand | removeSpaceLowercase}}.png" width="58" height="36"/>
+                            </div>
+                        </div>
+
+                        <div class="item-value center" flex="30">
+                            **** **** **** {{ccCard.last4}}
+                        </div>
+
+                        <div class="item-value center" flex="30">
+                            {{ccCard.exp_month}} / {{ccCard.exp_year | limitTo: -2}}
+                        </div>
+
+                        <div class="item-value center" flex="30">
+                            {{ccCard.name}}
+                        </div>
+                    </div>
+
+                    <div class="buttons" layout="row" layout-align="start center">
+                        <md-button class="md-icon-button" ng-click="vm.makeCardDefault(ccCard.id, $event)" aria-label="Make card default">
+                            <md-icon md-font-icon="icon-star-outline"></md-icon>
+                            <md-tooltip>Make this card as default</md-tooltip>
+                        </md-button>
+                        <md-button class="md-icon-button" ng-click="vm.deleteCard(ccCard.id, $event)" aria-label="Delete card">
+                            <md-icon md-font-icon="icon-delete"></md-icon>
+                            <md-tooltip>Delete credit card</md-tooltip>
+                        </md-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="emptyitems" layout="column" layout-align="center center" ng-if="!vm.allCardDetails">
+        <div class="">There are no cards maintained.</div>
+    </div>
+</div>

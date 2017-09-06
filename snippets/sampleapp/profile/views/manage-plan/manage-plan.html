@@ -1,0 +1,41 @@
+<div id="manage-plan-tab" layout="column">
+    <div class="subheader" layout="row">
+        Plan Details
+    </div>
+	<div class="currentPlanContainer pad_32">
+		<div class="paidPlanBannerContainer" layout="row">
+			<div class="summarySection" flex layout="column" layout-align="center center">
+                <div class="currentPlanDetail" layout="column" layout-align="center center">
+                    <span>You're currently on the</span>
+                    <span>{{vm.currentPlanDesc}} Plan</span>
+                </div>
+                <div ng-hide="vm.isProfileFreePlan" class="currentPlanDuration" layout="column" layout-align="center center">
+                    <span>Your plan expires in </span>
+                    <span class="countdown" ms-countdown-timer end-date="{{instanceCurrentPlanDetails.subscriptionperiodEnd}}" units="days"></span> 
+                </div>      
+                <md-button ng-show="vm.isProfileFreePlan" class="md-raised md-primary upgrade" ng-click="vm.navigateplanupgrade()">
+                    <md-icon md-font-icon="icon-heart"></md-icon>
+                    <span>Upgrade Plan</span>
+                </md-button>
+                <md-button ng-hide="vm.isProfileFreePlan" class="md-primary md-hue-3" style="border:2px solid;" ng-click="vm.navigateplanupgrade()">
+                    <md-icon md-font-icon="icon-arrow-down-bold-circle-outline"></md-icon>
+                    <span>Downgrade Plan</span>
+                </md-button>  
+            </div>
+            <div ng-hide="vm.isProfileFreePlan" class="summarySection" flex layout="column" layout-align="center center">
+                <div class="currentPlanDetail" layout="column" layout-align="center center">
+                    <span>Your plan currently has</span>
+                    <span>{{vm.userSlotCount}} User Slot</span>
+                </div>
+                <div ng-hide="vm.isProfileFreePlan" class="currentPlanDuration" layout="column" layout-align="center center">
+                    <span style="opacity:0;">Your user slot's expires in </span>
+                    <span style="opacity:0;" class="countdown" ms-countdown-timer end-date="{{instanceCurrentPlanDetails.subscriptionperiodEnd}}" units="days"></span> 
+                </div>      
+                <md-button class="md-primary" style="border:2px solid;" ng-click="vm.addAlacart()">
+                    <span>Purchase User Slots</span>
+                </md-button>
+            </div>
+		</div>
+		<div class="freePlanBannerContainer md-whiteframe-1dp" ng-show="false"></div>
+	</div>
+</div>

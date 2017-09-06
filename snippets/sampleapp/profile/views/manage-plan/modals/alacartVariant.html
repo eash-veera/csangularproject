@@ -1,0 +1,50 @@
+<md-dialog>
+	<div class="alacartComponent">
+		<md-content>
+            <md-tabs md-dynamic-height md-stretch-tabs="always" md-border-bottom md-selected="selectedAlacartVariantIndex">
+                <md-tab id="monthlyAlacartBilling">
+                    <md-tab-label>Monthly Billing</md-tab-label>
+                    <md-tab-body>
+                    	<div class="variantDetails">
+                    		<div class="tabHeader" layout="row" layout-align="center center">
+	                            <span>Pay <b>$6.00/mo</b> per user slot for a month.</span>
+	                        </div>
+	                        <div class="centerBody" layout="row" layout-align="start start">
+	                            <div class="dateContainer" flex layout="column" layout-align="center center">
+	                                <span>Total Users : </span>
+	                                <div ms-numeric-stepper min="minSlots" max="maxSlots" ng-model="slots"></div>
+	                            </div>
+	                            <div class="payableContainer" flex layout="column" layout-align="center center">
+	                                <span>Total Payable : </span>
+	                                <span>$ {{slots * slotPrices.monthly}}</span>
+	                            </div>
+	                        </div>
+                    	</div>
+                    </md-tab-body>
+                </md-tab>
+                <md-tab id="yearlyAlacartBilling">
+                    <md-tab-label>Yearly Billing</md-tab-label>
+                    <md-tab-body>
+                    	<div class="variantDetails">
+	                        <div class="tabHeader" layout="row" layout-align="center center"><span>Pay <b>$4.00/mo</b> per user slot for an year.</span>
+	                        </div>
+	                        <div class="centerBody" layout="row" layout-align="start start">
+	                        	<div class="dateContainer" flex layout="column" layout-align="center center">
+	                        		<span>Total Users : </span>
+	                                <div ms-numeric-stepper min="minSlots" max="maxSlots" ng-model="slots"></div>
+	                            </div>
+	                            <div class="payableContainer" flex layout="column" layout-align="center center">
+	                                <span>Total Payable : </span>
+	                                <span>$ {{slots * slotPrices.yearly}}</span>
+	                            </div>
+	                        </div>
+                        </div>
+                    </md-tab-body>
+                </md-tab>
+            </md-tabs>
+            <div class="tabFooter" layout="column" layout-align="center center">
+                <md-button class="md-primary" style="border:2px solid;" ng-click="buyAlacartOption($event)">Purchase</md-button>
+            </div>
+        </md-content>
+	</div>
+</md-dialog>

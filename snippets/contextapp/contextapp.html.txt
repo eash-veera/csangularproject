@@ -1,0 +1,214 @@
+<div id=threesixtyview class="page-layout simple fullwidth" layout="column" layout-align="center center">
+
+    <!-- CENTER -->
+    <div class="center" layout="column" layout-align="center center" flex ms-scroll flex>
+
+        <div class="content-card" layout="column">
+
+            <md-content>
+            	<!-- CONTENT WRAPPER -->
+                <div class="content-wrapper" layout="column" flex>
+                    <!-- 360 context setter component -->
+                	<div class="threesixty-component-holder" layout="row">
+                		<div id="threesixty-context-definer-component" class="threesixty-component-styling" flex layout="row">
+                            <div class="contextautocomplete-section" flex>
+                                <md-autocomplete ng-keydown="vm.searchContextSpecific($event, ctrl.searchText)" md-no-cache="ctrl.noCache" md-selected-item="ctrl.selectedItem" md-search-text-change="ctrl.searchTextChange(ctrl.searchText)" md-search-text="ctrl.searchText" md-selected-item-change="vm.preloadedContextSelector(item)" md-items="item in vm.primerProfileData" md-autocomplete-snap="width" md-item-text="item.profileName" md-min-length="0" placeholder="Search for a customer">
+                                    <md-item-template>
+                                        <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.profileName}}</span>
+                                    </md-item-template>
+                                    <md-not-found>
+                                        No customers matching "{{ctrl.searchText}}" were found.
+                                    </md-not-found>
+                                </md-autocomplete>
+                            </div>
+                            <div ng-hide="vm.metricsLoadingStatus" class="contextperiod-section">
+                                <md-select class="simplified" ng-model="vm.periodcontext" ng-change="vm.periodContextChange()">
+                                    <md-option value=1>Current Year</md-option>
+                                    <md-option value=0>Previous Year</md-option>
+                                    <!--<md-option value=0>This Month</md-option>
+                                    <md-option value=1>Last Month</md-option>
+                                    <md-option value=3>Last 3 Months</md-option>
+                                    <md-option value=6>Last 6 Months</md-option>-->
+                                </md-select>
+                            </div>
+                            <div ng-hide="vm.metricsLoadingStatus" class="contextrefresh-section">
+                                <md-button class="md-icon-button" aria-label="Refresh Context" ng-click="vm.refreshOverView()">
+                                    <md-icon md-menu-origin md-font-icon="icon-refresh"></md-icon>
+                                </md-button>
+                            </div>
+                        </div>
+                	</div>
+                    <!-- 360 context data component -->
+                	<div class="threesixty-component-holder" layout="row">
+                		<div ng-show="vm.componentsLoad" id="threesixty-bargraph-widget-component" class="side-margin-right threesixty-component-styling" layout="column" flex>
+                            <div class="widget-component-header">
+                                Sales and Receipts
+                            </div>
+                            <div class="wiget-component-content" style="padding:16px;">
+                                <canvas id="bar" class="chart chart-bar" chart-data="vm.chartData.data" chart-labels="vm.chartData.labels" chart-legend="false" chart-series="vm.chartData.series" chart-colors="vm.threeSixtyChartColors" chart></canvas>
+                            </div>
+                        </div>
+
+                		<div ng-show="vm.componentsLoad" id="threesixty-biteinfo-collection" class="side-margin-left" layout="column">
+
+                            <div class="threesixty-component-styling threesixty-biteinfo-widget-component side-margin-bottom" layout="row">
+                                <div class="valueSection" flex layout="column" layout-align="center start">
+                                    <span>Total Sales</span>
+                                    <span>{{vm.customerContextBiteInfoData.totalSales | currency:""}}</span>
+                                </div>
+                                <div class="iconSection" layout="column" layout-align="center center">
+                                    <img ng-src="/assets/icons/componenticons/totalsales.svg" width="50%" height="50%">
+                                </div>
+                            </div>
+
+                            <div class="threesixty-component-styling threesixty-biteinfo-widget-component side-margin-bottom" layout="row">
+                                <div class="valueSection" flex layout="column" layout-align="center start">
+                                    <span>Total Receipts</span>
+                                    <span>{{vm.customerContextBiteInfoData.totalReceipts | currency:""}}</span>
+                                </div>
+                                <div class="iconSection" layout="column" layout-align="center center">
+                                    <img ng-src="/assets/icons/componenticons/totalreceipts.svg" width="50%" height="50%">
+                                </div>
+                            </div>
+
+                            <div class="threesixty-component-styling threesixty-biteinfo-widget-component side-margin-bottom" layout="row">
+                                <div class="valueSection" flex layout="column" layout-align="center start">
+                                    <span>Total Expenses</span>
+                                    <span>{{vm.customerContextBiteInfoData.totalExpenses | currency:""}}</span>
+                                </div>
+                                <div class="iconSection" layout="column" layout-align="center center">
+                                    <img ng-src="/assets/icons/componenticons/averagesales.svg" width="50%" height="50%">
+                                </div>
+                            </div>
+
+                            <div class="threesixty-component-styling threesixty-biteinfo-widget-component side-margin-bottom" layout="row">
+                                <div class="valueSection" flex layout="column" layout-align="center start">
+                                    <span>Total Outstanding</span>
+                                    <span>{{vm.customerContextBiteInfoData.totalOutstanding | currency:""}}</span>
+                                </div>
+                                <div class="iconSection" layout="column" layout-align="center center">
+                                    <img ng-src="/assets/icons/componenticons/totaloutstanding.svg" width="50%" height="50%">
+                                </div>
+                            </div>
+                			
+                		</div>
+                	</div>
+                	<div class="threesixty-component-holder" layout="row">
+            			<div ng-show="vm.componentsLoad" id="threesixty-topsellinglister-widget-component" class="threesixty-component-styling side-margin-right" layout="column" flex>
+                            <div class="widget-component-header" layout="row" layout-align="space-between center">
+                                Top Selling Products
+                                <div class="pagingComponent" layout="row">
+                                    <span>{{vm.productShifterIndex.underVal}} - {{vm.productShifterIndex.upperVal}} of 8</span>
+                                    <md-button class="md-icon-button" ng-click="vm.shiftProductList('left')">
+                                        <md-icon md-font-icon="icon-chevron-left"></md-icon>
+                                    </md-button>
+                                    <md-button class="md-icon-button" ng-click="vm.shiftProductList('right')">
+                                        <md-icon md-font-icon="icon-chevron-right"></md-icon>
+                                    </md-button>
+                                </div>
+                            </div>
+                            <div class="widget-component-content pad_32" layout="column">
+                                <div ng-repeat="product in vm.topSellingProducts" class="contentrow" flex layout="row">
+                                    <div class="prodimgcell">
+                                        <img ng-src="{{product.productImgUrl}}" err-src="/assets/images/etc/errorImage.jpg" width="48" height="48"/>
+                                    </div>
+                                    <div class="proddesccell" layout="column" layout-align="center start" flex>
+                                        {{product.productName}}
+                                    </div>
+                                    <div class="prodcountcell" layout="column" layout-align="center end">
+                                        <span>
+                                            {{product.totalamount}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            			<div ng-show="vm.componentsLoad" id="threesixty-contactinfo-widget-component" class="threesixty-component-styling side-margin-left" layout="column" flex>
+                            <div class="widget-component-header" layout="row" layout-align="space-between center">
+                                Contact Information
+                                <md-button class="md-icon-button" ng-click="vm.addressContext = !vm.addressContext;">
+                                    <md-icon md-font-icon="icon-repeat"></md-icon>
+                                    <md-tooltip>Switch address view</md-tooltip>
+                                </md-button>
+                            </div>
+                            <div class="widget-component-content pad_32" layout="column">
+                                <div class="contentrow" flex layout="row">
+                                    <div class="propertycell">COMPANY NAME</div>
+                                    <div class="valuecell" flex>{{vm.customerContextProfileData.profileName}}</div>
+                                </div>
+                                <div class="contentrow" flex layout="row" ng-show="vm.addressContext">
+                                    <div class="propertycell">BILLING ADDRESS</div>
+                                    <div class="valuecell" flex><p>{{vm.customerContextProfileData.billingAddress.street}}<span ng-if="vm.customerContextProfileData.billingAddress.street">, </span>{{vm.customerContextProfileData.billingAddress.city}}<span ng-if="vm.customerContextProfileData.billingAddress.city">, </span>{{vm.customerContextProfileData.billingAddress.state}}<span ng-if="vm.customerContextProfileData.billingAddress.state">, </span>{{vm.customerContextProfileData.billingAddress.country}}</p></div>
+                                </div>
+                                <div class="contentrow" flex layout="row" ng-hide="vm.addressContext">
+                                    <div class="propertycell">SHIPPING ADDRESS</div>
+                                    <div class="valuecell" flex><p>{{vm.customerContextProfileData.shippingAddress.s_street}}<span ng-if="vm.customerContextProfileData.shippingAddress.s_street">, </span>{{vm.customerContextProfileData.shippingAddress.s_city}}<span ng-if="vm.customerContextProfileData.shippingAddress.s_city">, </span>{{vm.customerContextProfileData.shippingAddress.s_state}}<span ng-if="vm.customerContextProfileData.shippingAddress.s_state">, </span>{{vm.customerContextProfileData.shippingAddress.s_country}}</p></div>
+                                </div>
+                                <div class="contentrow" flex layout="row">
+                                    <div class="propertycell">CONTACT PERSON</div>
+                                    <div class="valuecell" flex>{{vm.customerContextProfileData.firstName}} {{vm.customerContextProfileData.lastName}}</div>
+                                </div>
+                                <div class="contentrow" flex layout="row">
+                                    <div class="propertycell">EMAIL</div>
+                                    <div class="valuecell" flex>{{vm.customerContextProfileData.email}}</div>
+                                </div>
+                                <div class="contentrow" flex layout="row">
+                                    <div class="propertycell">TELEPHONE</div>
+                                    <div class="valuecell" flex>{{vm.customerContextProfileData.phone}} , {{vm.customerContextProfileData.mobile}}</div>
+                                </div>
+                                <div class="contentrow" flex layout="row">
+                                    <div class="propertycell">WEBSITE</div>
+                                    <div class="valuecell" flex>{{vm.customerContextProfileData.website}}</div>
+                                </div>
+                            </div>
+                        </div>
+            		</div>
+            		<div class="threesixty-component-holder" layout="row">
+            			<div ng-show="vm.componentsLoad" id="threesixty-latestdocuments-widget-component" class="threesixty-component-styling" flex>
+            				<div class="widget-component-header" layout="row" layout-align="space-between center">
+                                Recent Documents
+
+                                <md-select class="simplified" ng-model="vm.documentContext" ng-change="vm.changeLatestDocumentContext()">
+                                    <md-option value="invoice">Invoice</md-option>
+                                    <md-option value="estimate">Estimate</md-option>
+                                    <md-option value="payment">Payment</md-option>
+                                    <md-option value="creditnote">Credit Note</md-option>
+                                    <md-option value="expense">Expenses</md-option>
+                                    <md-option value="inventorygin">Inventory GIN</md-option>
+                                    <!-- <md-option value="inventorygrn">Inventory GRN</md-option> -->
+                                    <!-- <md-option value="ledger">Ledger</md-option> -->
+                                </md-select>
+                            </div>
+                            <div class="widget-component-content" ng-switch="vm.documentContext">
+                                <div ng-switch-when="invoice" class="simple-table-container" ms-responsive-table>
+                                    <div ng-include="'app/main/threesixtyview/docSummaryTemplates/invoiceSummaryTemp.html'"></div>
+                                </div>
+                                <div ng-switch-when="estimate" class="simple-table-container" ms-responsive-table>
+                                    <div ng-include="'app/main/threesixtyview/docSummaryTemplates/estimateSummaryTemp.html'"></div>
+                                </div>
+                                <div ng-switch-when="payment" class="simple-table-container" ms-responsive-table>
+                                    <div ng-include="'app/main/threesixtyview/docSummaryTemplates/paymentSummaryTemp.html'"></div>
+                                </div>
+                                <div ng-switch-when="creditnote" class="simple-table-container" ms-responsive-table>
+                                    <div ng-include="'app/main/threesixtyview/docSummaryTemplates/creditnoteSummaryTemp.html'"></div>
+                                </div>
+                                <div ng-switch-when="expense" class="simple-table-container" ms-responsive-table>
+                                    <div ng-include="'app/main/threesixtyview/docSummaryTemplates/expenseSummaryTemp.html'"></div>
+                                </div>
+                                <div ng-switch-when="inventorygin" class="simple-table-container" ms-responsive-table>
+                                    <div ng-include="'app/main/threesixtyview/docSummaryTemplates/inventoryginSummaryTemp.html'"></div>
+                                </div>
+                                <!-- <div ng-switch-when="inventorygrn" class="simple-table-container" ms-responsive-table>
+                                    <div ng-include="'app/main/threesixtyview/docSummaryTemplates/inventorygrnSummaryTemp.html'"></div>
+                                </div> -->
+                            </div>
+            			</div>
+            		</div>
+                </div>
+                <!-- CONTENT WRAPPER -->
+        	</md-content>
+
+    	</div>
+	</div>
+	<!-- CENTER -->
+</div>

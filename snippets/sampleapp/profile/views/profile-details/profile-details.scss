@@ -1,0 +1,70 @@
+#profile{
+
+    #profile-details-tab{
+
+        .profileControlContainer{
+            width:100%;
+            padding:12px 24px;
+            border-bottom:1px solid rgba(0, 0, 0, 0.084);
+
+            button{
+                float:right;
+                margin:0px;
+            }
+
+            button:nth-child(2){
+                margin-right:12px;
+            }
+
+            button:nth-child(3){
+                margin-right:12px;
+            }
+        }
+
+        .profileDetailsForm{
+
+            .formSection{
+
+                &.subheader{
+                    background: #f6f6f6;
+                    font-size: 18px;
+                    height: 48px;
+                    line-height: 48px;
+                    padding-left: 32px;
+                }
+
+                &.pad_32{
+                    padding:32px;
+                }
+
+                .formSectionRow{
+
+                    md-input-container:nth-child(1){
+                        padding-right:16px;
+                    }
+
+                    md-input-container:nth-child(2){
+                        padding-left:16px;
+                    }
+                }
+            }
+
+            .formControlSection{
+                width:100%; 
+                height:64px;
+                padding-top:6px;  
+                border-top:1px solid rgba(0,0,0,0.084);
+
+                button{
+                    float:right;
+                    margin-right:24px; 
+                }
+
+                button:nth-child(2){
+                    float:right;
+                    margin-right:12px; 
+                }
+            }
+        }
+    }
+}

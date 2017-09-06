@@ -1,0 +1,48 @@
+<md-dialog class="customDialogBox frmModal currChangeModal" aria-label="cusTool">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>CHANGE CURRENCY</h2>
+            <span flex></span>
+            <md-button href class="md-icon-button" ng-click="ctrl.exitChngCurrModal()">
+                <md-icon  md-font-icon="icon-close" aria-label="Close dialog"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <form name="changeCurrForm">
+        <div class="dialogContent pad_32" style="overflow: auto;">
+            <div class="currencyChangeAutocomplete" layout="row" flex>
+                <md-autocomplete md-input-name="searchCurrency" class="no-float" flex ng-required="true" md-search-text="ctrl.currencySearchText" md-selected-item="ctrl.selectedCurrency" md-min-length="0" md-items="item in ctrl.currencyList | filter:ctrl.currencySearchText" md-item-text="item.currency_code" md-floating-label="Select currency" md-autofocus="true" md-selected-item-change="ctrl.selectedCurrencyChange(ctrl.selectedCurrency)" md-no-cache="false">
+                    <md-item-template ms-scroll>
+                        <span md-highlight-text="ctrl.currencySearchText" md-highlight-flags="^i">{{item.currency_code}} - </span>
+                        <span>{{item.currency_name}}</span>
+                    </md-item-template>
+                    <div ng-messages="changeCurrForm.searchCurrency.$error">
+                        <div ng-message="required">Please select <b>currency</b>.</div>
+                    </div>
+                </md-autocomplete>
+            </div>
+            <md-input-container md-no-float  style="padding-top: 10px; width: 100%;padding-bottom: 0px;margin-bottom: -10px">
+                <input name="exchangeRate" placeholder="Exchange Rate" ng-model="ctrl.exchangeRate" required>
+                <div ng-messages="changeCurrForm.exchangeRate.$error">
+                    <div ng-message="required">Please add <b>exchange</b> rate.</div>
+                    <div ng-message="pattern">Only <b>postive numerical</b> values accepted.</div>
+                </div>
+            </md-input-container>
+            <div class="converstionArea" layout="row" layout-align="start start">
+                <div class="baseCurrSection" flex layout="column">
+                    <span>Selected Currency</span>
+                    <span>1 {{ctrl.selectedCurrency.currency_code}}</span>
+                </div>
+                <div class="AERSection" flex layout="column">
+                    <span>Base Currency</span>
+                    <span>{{ctrl.exchangeRate}} {{ctrl.currencydefaults.baseCurrency}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="dialogFooter">
+            <span flex></span>
+            <md-button type="submit" ng-disabled="changeCurrForm.$invalid" ng-click="ctrl.cnfrmSwitchActiveCurr()" style="border:2px solid" class="md-primary">SAVE</md-button>
+            <md-button ng-disabled="!ctrl.currencydefaults.currencyStatus" ng-click="ctrl.cnfrmRstActiveCurr()" style="border:2px solid" class="md-primary md-hue-3">RESET</md-button>
+        </div>
+    </form>
+</md-dialog>

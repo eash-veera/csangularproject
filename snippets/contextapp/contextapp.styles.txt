@@ -1,0 +1,280 @@
+#threesixtyview {
+
+    .center {
+        width:960px;
+        background:none;
+        font-size:15px !important; 
+
+        .content-card {
+            width:960px;
+            background:none;
+            box-shadow:none;
+
+            md-content{
+               background:none;
+               
+               .content-wrapper{
+                    padding:32px 1px;
+
+                    .threesixty-component-holder{
+                        width:100%; 
+                        margin-bottom:32px;
+
+                        .threesixty-component-styling{
+                            background:#ffffff;
+                            border-radius:2px;
+                            box-shadow:0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+                        
+                            .widget-component-header{
+                                font-size: 18px;
+                                height: 48px;
+                                line-height: 48px;
+                                padding: 0px 16px;
+                                border-bottom:1px solid rgba(0, 0, 0, 0.12);
+
+                                span{
+                                    font-size:13px;
+                                    font-weight:500;  
+                                }
+
+                                button{
+                                    padding:0px;
+                                    margin:0px;
+                                    height:48px;
+                                }
+
+                            }
+
+                            .widget-component-content{
+
+                                &.pad_32{
+                                    padding:32px;
+                                }
+
+                                &.pad_16{
+                                    padding:16px;
+                                }
+
+                                .recdentDocEmptyStatus{
+                                    font-size: 18px;
+                                    padding: 32px;
+                                }
+                            }
+
+                            &#threesixty-contactinfo-widget-component{
+
+                                .contentrow{
+                                    padding:16px 0px;
+
+                                    .propertycell{
+                                        width:160px;
+                                        font-weight:500;
+                                        color:rgba(0, 0, 0, 0.4); 
+                                    }
+
+                                    .valuecell{
+                                        font-weight:500;
+
+                                        p{
+                                            
+                                            margin:0px;
+                                        }
+                                    }
+
+                                    .cellcontrol{
+                                        width:48px;
+                                        height:48px;
+                                        border:1px solid red;  
+                                    }
+
+                                }
+
+                                .contentrow:first-child(){
+                                    padding-top:0px;
+                                }
+
+                                .contentrow:last-child(){
+                                    padding-bottom:0px;
+                                }
+                            }
+
+                            &#threesixty-topsellinglister-widget-component{
+
+                                .contentrow{
+                                    padding:16px 0px;
+
+                                    .prodimgcell{
+                                        width:48px;
+                                        height:48px;
+                                        margin-right:8px;
+
+                                        img{
+                                            width:48px;
+                                            height:48px;
+                                            border-radius:50%;
+                                        } 
+                                    }
+
+                                    .proddesccell{
+                                        font-weight:500; 
+                                    }
+
+                                    .prodcountcell{
+
+                                        span{
+                                            background-color: #95a5a6;
+                                            border: 1px solid #7f8c8d;
+                                            font-size: 15px;
+                                            border-radius: 2px;
+                                            padding: 3px 8px;
+                                            color: #fafafa;
+                                        }
+                                    }
+
+                                }
+
+                                .contentrow:first-child(){
+                                    padding-top:0px;
+                                }
+
+                                .contentrow:last-child(){
+                                    padding-bottom:0px;
+                                }
+                            }
+                        }
+
+                        .side-margin-left{
+                            margin-left:16px;
+                        }
+
+                        .side-margin-right{
+                            margin-right:16px;
+                        }
+
+                        .side-margin-top{
+                            margin-top:32px;
+                        }
+
+                        .side-margin-bottom{
+                            margin-bottom:32px;
+                        }
+
+                        .side-margin-bottom:last-child(){
+                            margin-bottom:0px;
+                        }
+
+                        #threesixty-context-definer-component{
+                            width:100%;
+
+                            .contextautocomplete-section{
+                                height:64px;
+                                padding-right:16px;
+
+                                md-autocomplete{
+                                    height:100%;
+
+                                    md-autocomplete-wrap{
+                                        height:100%;
+                                        box-shadow:none;
+
+                                        input{
+                                            height:100%;
+                                            line-height:64px;
+                                            font-size:18px;  
+                                        }
+
+                                        button{
+                                            top:50%;
+                                            margin-top:-15px; 
+                                        }
+                                    }
+                                } 
+                            }
+
+                            .contextperiod-section{
+                                height:64px;
+                                width:128px;
+                                padding:19px 0px;
+
+                                md-select{
+                                    margin:0px !important;
+                                }  
+                            }
+
+                            .contextrefresh-section{
+                                height:64px;
+                                width:64px;
+                                padding:12px 6px; 
+                            }
+                        }
+
+                        #threesixty-bargraph-widget-component{
+                            height:436px;
+                        }
+
+                        #threesixty-biteinfo-collection{
+
+                            .threesixty-biteinfo-widget-component{
+                                width:280px;
+                                height:85px;
+
+                                .valueSection{
+                                    height:100%;
+                                    padding-left:16px; 
+                                    
+                                    span:nth-child(1){
+                                        font-size:15px;
+                                        font-weight:500; 
+                                        color:rgba(0,0,0,0.4);
+                                    }
+
+                                    span:nth-child(2){
+                                        font-size:26px;
+                                    }
+                                }
+
+                                .iconSection{
+                                    height:100%; 
+                                    width:85px;
+                                    opacity:0.4;
+                                    border-left:1px solid rgba(200,200,200,0.9);
+                                }
+
+                            }
+                        }
+
+                        #threesixty-topsellinglister-widget-component{
+                            height:auto; 
+                            min-height:396px;
+                        }
+
+                        #threesixty-contactinfo-widget-component{
+                            height:auto;
+                            min-height:396px;
+                        }
+
+                        #threesixty-latestdocuments-widget-component{
+                            min-height:200px; 
+                            height:auto;
+                        } 
+                    } 
+
+                    .threesixty-component-holder:last-child(){
+                        margin-bottom:0px;
+                    } 
+               } 
+            }
+        }
+    }
+}
+
+
+// RESPONSIVE
+@media screen and (max-width: $layout-breakpoint-sm) {
+
+    #threesixtyview {
+
+        
+    }
+
+}

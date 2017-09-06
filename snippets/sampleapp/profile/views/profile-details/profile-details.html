@@ -1,0 +1,85 @@
+<div id="profile-details-tab" layout="column">
+    <section class="profileControlContainer">
+        <md-button class="md-primary" ng-click="vm.changePassword($event)" style="border:2px solid">Change Password</md-button>
+        <md-button ng-show="vm.isEditable" class="md-primary" ng-click="vm.editProfileDetails()" style="border:2px solid">Edit Profile Details</md-button>
+    </section>
+    <form class="profileDetailsForm" name="profileDetails" layout="column">
+        <div class="formSection subheader" layout="row">
+            User Details
+        </div>
+        <div class="formSection inputContainer pad_32" layout="column">
+            <div class="formSectionRow" layout="row">
+                <md-input-container md-no-float class="md-block" flex>
+                    <input ng-disabled="vm.isEditable" name="name" placeholder="Name" ng-model="vm.profileDetails.Name" required>
+                    <div ng-messages="profileDetails.name.$error" role="alert">
+                        <div ng-message-exp="['required']">
+                            Your name is required !
+                        </div>
+                    </div>
+                </md-input-container>
+                <md-input-container md-no-float class="md-block" flex>
+                    <input ng-disabled="true" placeholder="Email" ng-model="vm.profileDetails.Email" name="email" ng-pattern="/^.+@.+\..+$/" required>
+                    <div ng-messages="profileDetails.email.$error" role="alert">
+                        <div ng-message-exp="['required','pattern']">
+                            Your email must look like an e-mail address.
+                        </div>
+                    </div>
+                </md-input-container>
+            </div>
+            <div class="formSectionRow" layout="row">
+                <md-input-container md-no-float class="md-block" flex>
+                    <input ng-disabled="vm.isEditable" name="phoneNo" placeholder="Phone Number" ng-model="vm.profileDetails.PhoneNumber" ng-pattern="/^[0-9 ()+-]+$/" required>
+                    <div ng-messages="profileDetails.phoneNo.$error" role="alert">
+                        <div ng-message-exp="['required','pattern']">
+                            Your phone number should only include numeric values.
+                        </div>
+                    </div>
+                </md-input-container>
+                <md-input-container md-no-float class="md-block" flex>
+                    <input ng-disabled="vm.isEditable" name="mobileNo" placeholder="Mobile Number" ng-model="vm.profileDetails.Phone" ng-pattern="/^[0-9 ()+-]+$/">
+                    <div ng-messages="profileDetails.mobileNo.$error" role="alert">
+                        <div ng-message-exp="['pattern']">
+                            Your mobile number shuould only include numeric values.
+                        </div>
+                    </div>
+                </md-input-container>
+            </div>
+        </div>
+        <div class="formSection subheader" layout="row">
+            Address Details
+        </div>
+        <div class="formSection inputContainer pad_32" layout="column">
+            <div class="formSectionRow" layout="row">
+                <md-input-container md-no-float class="md-block" flex-gt-sm>
+                  <input ng-disabled="vm.isEditable" placeholder="Address" ng-model="vm.profileDetails.BillingAddress">
+                </md-input-container>
+            </div>
+            <div class="formSectionRow" layout="row">
+                <md-autocomplete ng-disabled="vm.isEditable" class="no-float"
+                    flex 
+                    md-selected-item="vm.profileDetails.Country" 
+                    md-search-text="vm.countrySearch"
+                    md-items="item in vm.querySearchCountry(vm.countrySearch)" 
+                    md-item-text="item.country" 
+                    md-floating-label="Country"
+                    md-selected-item-change="vm.changeProfileCountry(vm.selectedCountry)">
+                  <md-item-template>
+                    <span>{{item.country}}</span>
+                  </md-item-template>
+                </md-autocomplete>
+                <md-input-container md-no-float class="md-block" flex="50">
+                    <input ng-disabled="vm.isEditable" placeholder="Zip Code" ng-model="vm.profileDetails.ZipCode">
+                </md-input-container>
+            </div>
+            <div class="formSectionRow" layout="row">
+                <md-input-container md-no-float class="md-block" flex="50">
+                    <input ng-disabled="vm.isEditable" name="organization" placeholder="Organization" ng-model="vm.profileDetails.Company">
+                </md-input-container>
+            </div>
+        </div>
+        <div class="formControlSection" ng-hide="vm.isEditable">
+            <md-button type="submit" ng-disabled="profileDetails.$invalid" class="md-primary" ng-click="vm.saveProfileDetails()" style="border:2px solid">Save Changes</md-button>
+            <md-button class="md-primary md-hue-3" ng-click="vm.cancelProfileDetailChanges()" style="border:2px solid">Cancel Changes</md-button>
+        </div>
+    </form>
+</div>

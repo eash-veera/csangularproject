@@ -1,0 +1,79 @@
+<div id="profile" class="page-layout carded boxed right-sidenav" layout="row">
+
+    <!-- CENTER -->
+    <div class="center" layout="column" layout-align="center center" flex>
+
+        <div class="content-card" layout="column">
+
+            <md-content flex ms-scroll>
+
+                <div class="headerContainer md-primary-bg md-hue-3" layout="column" layout-align="end start">
+                    <div class="userMainInfo" layout="row" layout-align="start center" >
+                        <div class="profileImage" layout="column" ms-profilepic-uploader>
+                            <img class="profile-image avatar huge" ng-src="{{instanceProfileDetails.ProfilePicture}}" err-src="assets/images/avatars/profile.jpg" app-uploader="vm.profilePicConfig" result="vm.setProfilePic(res)">
+                            <md-tooltip>Change profile picture</md-tooltip>
+                        </div>
+                        <div class="profileSummary" layout="column">
+                            <span>{{vm.profileDetails.Name}}</span>
+                            <span>{{vm.profileDetails.Company}}</span>
+                        </div>
+                    </div>
+                </div>
+               
+                <!-- CONTENT WRAPPER -->
+                <div class="content-wrapper" layout="column" flex ng-show="isContextSpA">
+                    <md-tabs md-dynamic-height md-stretch-tabs="always" md-border-bottom>
+                        <md-tab>
+                            <md-tab-label>
+                                <span>Profile Details</span>
+                            </md-tab-label>
+                            <md-tab-body>
+                                <md-content class="profile-details-tab"
+                                            ng-include="'app/main/profile/views/profile-details/profile-details.html'">
+                                </md-content>
+                            </md-tab-body>
+                        </md-tab>
+                        <md-tab>
+                            <md-tab-label>
+                                <span>Manage Plan</span>
+                            </md-tab-label>
+                            <md-tab-body>
+                                <md-content class="manage-plan-tab"
+                                            ng-include="'app/main/profile/views/manage-plan/manage-plan.html'">
+                                </md-content>
+                            </md-tab-body>
+                        </md-tab>
+                        <md-tab>
+                            <md-tab-label>
+                                <span>Manage Cards</span>
+                            </md-tab-label>
+                            <md-tab-body>
+                                <md-content class="manage-cards-tab" ng-include="'app/main/profile/views/manage-cards/manage-cards.html'"></md-content>
+                            </md-tab-body>
+                        </md-tab>
+                        <md-tab>
+                            <md-tab-label>
+                                <span>Purchase History</span>
+                            </md-tab-label>
+                            <md-tab-body>
+                                <md-content class="purchase-history-tab"
+                                            ng-include="'app/main/profile/views/purchase-history/purchase-history.html'">
+                                </md-content>
+                                <!-- <md-content layout="column" layout-align="center center" class="purchase-history-tab" ng-include="'app/main/profile/views/comingsoon/comingsoon.html'"></md-content> -->
+                            </md-tab-body>
+                        </md-tab>
+                    </md-tabs>
+                </div>
+                <div class="content-wrapper" layout="column" flex ng-hide="isContextSpA">
+                    <md-content class="profile-details-tab" ng-include="'app/main/profile/views/profile-details/profile-details.html'">
+                    </md-content>
+                </div>
+                <!-- / CONTENT WRAPPER-->
+            </md-content>
+            
+        </div>
+
+    </div>
+    <!-- / CENTER -->
+
+</div>
